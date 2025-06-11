@@ -1,4 +1,59 @@
+// Check if we're in development mode
+function isDevelopment() {
+  return (
+    window.location.protocol === "file:" ||
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname === ""
+  );
+}
+
+// Safe analytics tracking function
+function trackEvent(eventName, data = null) {
+  if (isDevelopment()) {
+    console.log(
+      "🚫 Development mode - Analytics event blocked:",
+      eventName,
+      data
+    );
+    return;
+  }
+
+  if (typeof Lit !== "undefined") {
+    if (data) {
+      Lit.event(eventName, data);
+    } else {
+      Lit.event(eventName);
+    }
+  }
+}
+
+// FAQ Toggle Function
+function toggleFaq(element, faqId) {
+  const faqItem = element.parentElement;
+  const answer = faqItem.querySelector(".faq-answer");
+  const toggle = element.querySelector(".faq-toggle");
+
+  if (answer.style.display === "none" || answer.style.display === "") {
+    answer.style.display = "block";
+    toggle.textContent = "−";
+    faqItem.classList.add("active");
+    // Track FAQ interaction
+    trackEvent("faq_opened_" + faqId);
+  } else {
+    answer.style.display = "none";
+    toggle.textContent = "+";
+    faqItem.classList.remove("active");
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
+  // Initialize FAQs as collapsed
+  const faqAnswers = document.querySelectorAll(".faq-answer");
+  faqAnswers.forEach((answer) => {
+    answer.style.display = "none";
+  });
+
   // EU Countries list for multiselect
   const euCountries = [
     "Austria",

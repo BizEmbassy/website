@@ -10,6 +10,13 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 
     <link rel="stylesheet" href="styles/main.css" />
+
+    <!-- Litlyx Analytics -->
+    <script
+      defer
+      data-project="68496e9609e0969e5bd71f22"
+      src="https://cdn.jsdelivr.net/gh/litlyx/litlyx-js/browser/litlyx.js"
+    ></script>
   </head>
   <body>
     <header class="header">
@@ -24,9 +31,18 @@
           </a>
         </div>
         <nav class="nav">
-          <a href="#program-details" class="nav-link">Pricing</a>
+          <a
+            href="#program-details"
+            class="nav-link"
+            onclick="trackEvent('pricing_nav_click')"
+            >Pricing</a
+          >
           <a href="#faq" class="nav-link">FAQs</a>
-          <a href="#waitlist" class="cta-button primary small">
+          <a
+            href="#waitlist"
+            class="cta-button primary small"
+            onclick="trackEvent('cta_nav_apply')"
+          >
             <span class="cta-text-full">Apply Now</span>
             <span class="cta-text-short">Apply</span>
           </a>
@@ -54,7 +70,10 @@
                   interested in buying from you.</strong
                 >
               </p>
-              <a href="#waitlist" class="cta-button primary"
+              <a
+                href="#waitlist"
+                class="cta-button primary"
+                onclick="trackEvent('cta_hero_apply')"
                 >Apply for the Netherlands Cohort</a
               >
             </div>
@@ -350,47 +369,85 @@
           <h2>FAQs</h2>
           <div class="faq-items">
             <div class="faq-item">
-              <h4>Q: How do you guarantee 3 customers?</h4>
-              <p>
-                A: Authority-backed outreach + problem-focused approach +
-                systematic follow-up = predictable results. If you prepare and
-                follow-up thoroughly, but don't get 3 qualified commitments, we
-                will refund you.
-              </p>
+              <h4
+                class="faq-question"
+                onclick="toggleFaq(this, 'guarantee_customers')"
+              >
+                Q: How do you guarantee 3 customers?
+                <span class="faq-toggle">+</span>
+              </h4>
+              <div class="faq-answer">
+                <p>
+                  A: Authority-backed outreach + problem-focused approach +
+                  systematic follow-up = predictable results. If you prepare and
+                  follow-up thoroughly, but don't get 3 qualified commitments,
+                  we will refund you.
+                </p>
+              </div>
             </div>
 
             <div class="faq-item">
-              <h4>Q: What if my English isn't perfect?</h4>
-              <p>
-                A: Perfection is overrated, but you must handle concise, focused
-                meetings in English with ease. We will help you prepare.
-              </p>
+              <h4
+                class="faq-question"
+                onclick="toggleFaq(this, 'english_level')"
+              >
+                Q: What if my English isn't perfect?
+                <span class="faq-toggle">+</span>
+              </h4>
+              <div class="faq-answer">
+                <p>
+                  A: Perfection is overrated, but you must handle concise,
+                  focused meetings in English with ease. We will help you
+                  prepare.
+                </p>
+              </div>
             </div>
 
             <div class="faq-item">
-              <h4>Q: How do you select companies?</h4>
-              <p>
-                A: We only choose serious, proven B2B startups or service
-                providers ready to actively participate in international
-                expansion.
-              </p>
+              <h4
+                class="faq-question"
+                onclick="toggleFaq(this, 'company_selection')"
+              >
+                Q: How do you select companies?
+                <span class="faq-toggle">+</span>
+              </h4>
+              <div class="faq-answer">
+                <p>
+                  A: We only choose serious, proven B2B startups or service
+                  providers ready to actively participate in international
+                  expansion.
+                </p>
+              </div>
             </div>
 
             <div class="faq-item">
-              <h4>Q: Why the Netherlands specifically?</h4>
-              <p>
-                A: English-speaking, tech-forward, and gateway to Europe. Plus,
-                we have established embassy relationships there.
-              </p>
+              <h4
+                class="faq-question"
+                onclick="toggleFaq(this, 'why_netherlands')"
+              >
+                Q: Why the Netherlands specifically?
+                <span class="faq-toggle">+</span>
+              </h4>
+              <div class="faq-answer">
+                <p>
+                  A: English-speaking, tech-forward, and gateway to Europe.
+                  Plus, we have established embassy relationships there.
+                </p>
+              </div>
             </div>
 
             <div class="faq-item">
-              <h4>Q: Can companies outside of CEE apply?</h4>
-              <p>
-                A: Yes, if you are EU-based. But you will have to come to
-                Bratislava for the workshop. It's crucial that you meet the
-                other companies in your cohort in person.
-              </p>
+              <h4 class="faq-question" onclick="toggleFaq(this, 'outside_cee')">
+                Q: Can companies outside of CEE apply?
+                <span class="faq-toggle">+</span>
+              </h4>
+              <div class="faq-answer">
+                <p>
+                  A: Yes, if you are EU-based. But you will have to come to
+                  Bratislava for the workshop. It's crucial that you meet the
+                  other companies in your cohort in person.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -433,7 +490,10 @@
 
           <p class="urgency">Only 10 spots. Don't miss out.</p>
 
-          <a href="#" class="cta-button primary large"
+          <a
+            href="#"
+            class="cta-button primary large"
+            onclick="trackEvent('cta_final_waitlist')"
             >Join Waitlist - Q4 2025</a
           >
         </div>
